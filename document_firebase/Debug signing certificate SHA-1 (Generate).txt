@@ -1,0 +1,9 @@
+Important Notes:
+
+keytool -list -v -keystore C:\Users\Mahsin\.android\debug.keystore -alias androiddebugkey -storepass android -keypass android
+
+multiDexEnabled true
+implementation 'com.android.support:multidex:1.0.3'
+
+----------------------------------------------------------------------------------------------------------
+Contact:https://www.facebook.com/afran.sarkar.11

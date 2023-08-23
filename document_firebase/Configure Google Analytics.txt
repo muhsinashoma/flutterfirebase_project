@@ -1,0 +1,19 @@
+Configure Google Analytics
+-----------------------------------------
+
+Create a project (Step 3 of 3)
+Configure Google Analytics
+Analytics location 
+Bangladesh
+Google Analytics is a business tool. Use it exclusively for purposes related to your trade, business, craft, or profession.
+
+Data sharing settings and Google Analytics terms
+
+Use the default settings for sharing Google Analytics data. Learn more
+Share your Analytics data with Google to improve Google Products and Services
+Share your Analytics data with Google to enable Benchmarking
+Share your Analytics data with Google to enable Technical Support
+Share your Analytics data with Google Account Specialists
+
+I accept the Google Analytics terms
+Upon project creation, a new Google Analytics property will be created and linked to your Firebase project. This link will enable data flow between the products. Data exported from your Google Analytics property into Firebase is subject to the Firebase terms of service, while Firebase data imported into Google Analytics is subject to the Google Analytics terms of service. Learn more.

@@ -1,0 +1,12 @@
+https://firebase.google.com/
+
+1 Register app
+
+Android package name ?
+
+com.muhsina.flutterfirebase
+
+
+Debug signing certificate SHA-1 (optional) ?
+
+SHA1: 42:3A:AB:D8:20:AF:47:CA:1F:C6:38:E0:B9:31:0D:29:5D:06:E6:E5

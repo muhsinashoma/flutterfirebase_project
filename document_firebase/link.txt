@@ -1,0 +1,209 @@
+2023-08-21
+
+----------------------------------------------------------------------------------
+
+
+https://www.youtube.com/watch?v=0buKQHokLK8
+
+https://www.mongodb.com/nosql-explained
+
+
+Firebase is a Backend-as-a-Service (BaaS) app development platform that provides hosted backend services such as a realtime database, cloud storage, authentication, crash reporting, machine learning, remote configuration, and hosting for your static files. Firebase supports Flutter.
+------------------------------------------------------------------------
+
+https://firebase.google.com/
+------------------------------------------------------------------------
+1. Firebase is a backend service. backend service basically provides many tools for developers. Through which developers can bulid quality apps
+2. Firebase is a No SQL database
+
+SQL Database : is structured query language database that means data store in table akare.
+
+and we can say table based and is a relational database management system.
+
+Oracale and MySQL are example of SQL Database : Year Start for concept : 1970
+
+--------------------------------------------------------------------------------------------------
+Year Start for concept : 2000
+
+
+
+No SQL Databse :  No only Structured Query Language : Data will be stored in key value pair that means document based.
+
+Data is store in json format. In no sql database we can get extra features than the SQL database.
+
+
+1. Mongo DB 
+
+2. Firebase is one of them
+
+
+In modern application No SQL Database is used
+
+We can say firebase  is a readymate backend. 
+
+Firebase provides Which types of facilities :
+
+1. Build better apps  ->Hosting, authentication, Cloud Storage 
+2. Improve app quality
+3. Grow your business
+--------------------------------------------------------------------------------------------------------------------------
+
+To build the mid level apps we can use firebase application. By using firebase we can get readymate backend in free
+
+----------------------------------------------------------------------------------------------------------
+
+for modern applicaton
+
+Firebase is a Backend-as-a-Service (BaaS) app development platform that provides hosted backend services such as a realtime database, cloud storage, authentication, crash reporting, machine learning, remote configuration, and hosting for your static files. Firebase supports Flutter.
+----------------------------------------------------------------------------------------------------------------------------
+
+1. Introduction to firebase | flutter bangla tutorial | Afran
+
+-------------------------------------------------------------------------------------------------------------------------
+next vedio:
+
+how to integrate Firebase SDK insideflutter sdk 
+
+and how to use Firebase SDK inside flutter sdk 
+--------------------------------------------------------------------------------------------------------------------------------
+
+
+https://www.youtube.com/watch?v=vIb_Mb6jC6A&list=PLy0nhnjSE4irlFsT1bX-Hy7KXLa9W0til&index=1
+
+1. Introduction to firebase | flutter bangla tutorial | Afran
+
+----------------------------------------------------------------------------------------------------------------------------------
+
+
+https://www.youtube.com/watch?v=nkpoZ_Zge80&list=PLy0nhnjSE4irlFsT1bX-Hy7KXLa9W0til&index=2
+
+2. How to add Firebase in your flutter project | flutter bangla tutorial
+
+
+Now we will integrate to try firebase in flutter project
+
+https://firebase.google.com/
+
+Working this link
+
+ERROR:'keytool' is not recognized as an internal or external command, operable program or batch file
+
+
+https://stackoverflow.com/questions/6211919/errorkeytool-is-not-recognized-as-an-internal-or-external-command-operable-p
+
+
+-------------------------------------------------------------------------------------------------------------------------------------
+C:\Program Files\Android\Android Studio\jre\bin\java
+
+-------------------------------------------------------------------------------------------------------------------------------------
+
+C:\Program Files\openssl-0.9.8k_X64\bin
+
+Important Notes:
+keytool -list -v -keystore C:\Users\Mahsina\.android\debug.keystore -alias androiddebugkey -storepass android -keypass android
+
+multiDexEnabled true
+implementation 'com.android.support:multidex:1.0.3'
+
+Contact:https://www.facebook.com/afran.sarkar.11
+
+
+keytool -exportcert -alias androiddebugkey -keystore "C:\Users\Username\.android\debug.keystore" | "C:\Program Files\openssl-0.9.8k_X64\bin\openssl.exe" sha1 -binary | "C:\Program Files\openssl-0.9.8k_X64\bin\openssl.exe" base64
+
+------------------------------------------------------------------------------------------------------
+C:\Users\Mahsin>keytool -list -v -keystore C:\Users\Mahsina\.android\debug.keystore -alias androiddebugkey -storepass android -keypass android
+'keytool' is not recognized as an internal or external command,
+operable program or batch file.
+
+
+
+--------------------------------------------------------------------------------------------------------------------------
+Working this link
+
+ERROR:'keytool' is not recognized as an internal or external command, operable program or batch file
+
+
+https://stackoverflow.com/questions/6211919/errorkeytool-is-not-recognized-as-an-internal-or-external-command-operable-p
+----------------------------------------------------------------------------------------------------------------------------
+1. Introduction to firebase | flutter bangla tutorial | Afran
+
+1. https://www.youtube.com/watch?v=vIb_Mb6jC6A&list=PLy0nhnjSE4irlFsT1bX-Hy7KXLa9W0til
+
+
+-------------------------------------------------------------------------------------------------------
+
+2. How to add Firebase in your flutter project | flutter bangla tutorial
+
+2. https://www.youtube.com/watch?v=nkpoZ_Zge80&list=PLy0nhnjSE4irlFsT1bX-Hy7KXLa9W0til&index=3
+
+-------------------------------------------------------------------------------------------------------------
+
+3. How to fetch data from firebase with FutureBuilder flutter
+
+3. https://www.youtube.com/watch?v=2Gc0oMND3ho&list=PLy0nhnjSE4irlFsT1bX-Hy7KXLa9W0til&index=4
+
+---------------------------------------------------------------------------------------------------------
+
+3. https://www.youtube.com/watch?v=2Gc0oMND3ho&list=PLy0nhnjSE4irlFsT1bX-Hy7KXLa9W0til&index=4
+
+4. https://www.youtube.com/watch?v=38iJSDzsmO4&list=PLy0nhnjSE4irlFsT1bX-Hy7KXLa9W0til&index=4&pp=iAQB
+
+5. https://www.youtube.com/watch?v=ODGGvIOx61M&list=PLy0nhnjSE4irlFsT1bX-Hy7KXLa9W0til&index=5&pp=iAQB
+
+6. https://www.youtube.com/watch?v=DsXTCvWlvws&list=PLy0nhnjSE4irlFsT1bX-Hy7KXLa9W0til&index=6&pp=iAQB
+
+7. https://www.youtube.com/watch?v=tPqbfNVOj7Y&list=PLy0nhnjSE4irlFsT1bX-Hy7KXLa9W0til&index=7&pp=iAQB
+
+8. https://www.youtube.com/watch?v=rmoeM0tznD8&list=PLy0nhnjSE4irlFsT1bX-Hy7KXLa9W0til&index=9
+
+------------------------------------------------------------------------------------------------------------------------------------
+
+keytool -genkey -v -keystore C:/debug.keystore -alias androiddebugkey -storepass android -keypass android -keyalg RSA -keysize 2048 -validity 999999 -dname "CN=Android Debug,O=Android,C=US"
+
+keytool -list -v -keystore C:\Users\Mahsin\.android\debug.keystore -alias androiddebugkey -storepass android -keypass android
+
+
+----------------------------------------------------------------------------
+
+
+Microsoft Windows [Version 10.0.19045.3324]
+(c) Microsoft Corporation. All rights reserved.
+
+
+
+Link for SHA Generate : https://stackoverflow.com/questions/6211919/errorkeytool-is-not-recognized-as-an-internal-or-external-command-operable-p
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+D:\Flutter-Project\flutterfirebase\android>keytool -list -v -keystore C:\Users\Mahsina\.android\debug.keystore -alias androiddebugkey -storepass android -keypass android
+keytool error: java.lang.Exception: Keystore file does not exist: C:\Users\Mahsina\.android\debug.keystore
+java.lang.Exception: Keystore file does not exist: C:\Users\Mahsina\.android\debug.keystore
+        at java.base/sun.security.tools.keytool.Main.doCommands(Main.java:923)
+        at java.base/sun.security.tools.keytool.Main.run(Main.java:423)
+        at java.base/sun.security.tools.keytool.Main.main(Main.java:416)
+
+D:\Flutter-Project\flutterfirebase\android>keytool -list -v -keystore C:\Users\Mahsin\.android\debug.keystore -alias androiddebugkey -storepass android -keypass android
+Alias name: androiddebugkey
+Creation date: Aug 21, 2023
+Entry type: PrivateKeyEntry
+Certificate chain length: 1
+Certificate[1]:
+Owner: CN=Android Debug, O=Android, C=US
+Issuer: CN=Android Debug, O=Android, C=US
+Serial number: 4eb63619df8f645e
+Valid from: Mon Aug 21 16:48:08 BDT 2023 until: Mon Jul 17 16:48:08 BDT 4761
+Certificate fingerprints:
+         SHA1: 42:3A:AB:D8:20:AF:47:CA:1F:C6:38:E0:B9:31:0D:29:5D:06:E6:E5
+         SHA256: 0C:D9:E8:83:35:78:D1:B7:06:6E:04:C2:5E:FE:01:A4:04:5D:9B:BA:F7:95:4C:C4:C4:9E:E4:FA:65:E8:B2:3D
+Signature algorithm name: SHA256withRSA
+Subject Public Key Algorithm: 2048-bit RSA key
+Version: 3
+
+Extensions:
+
+#1: ObjectId: 2.5.29.14 Criticality=false
+SubjectKeyIdentifier [
+KeyIdentifier [
+0000: 23 72 9D 3F 9D E1 FD A0   DC 9F EE 00 19 BB E3 FD  #r.?............
+0010: 2B 56 46 BB                                        +VF.
+]
+]
+-----------------------------------------------------------------------------------------------------------

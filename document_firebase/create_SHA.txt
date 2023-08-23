@@ -1,0 +1,67 @@
+Microsoft Windows [Version 10.0.19045.3324]
+(c) Microsoft Corporation. All rights reserved.
+
+D:\Flutter-Project\flutterfirebase\android>keytool -list -v -keystore C:\Users\Mahsina\.android\debug.keystore -alias androiddebugkey -storepass android -keypass android
+keytool error: java.lang.Exception: Keystore file does not exist: C:\Users\Mahsina\.android\debug.keystore
+java.lang.Exception: Keystore file does not exist: C:\Users\Mahsina\.android\debug.keystore
+        at java.base/sun.security.tools.keytool.Main.doCommands(Main.java:923)
+        at java.base/sun.security.tools.keytool.Main.run(Main.java:423)
+        at java.base/sun.security.tools.keytool.Main.main(Main.java:416)
+
+D:\Flutter-Project\flutterfirebase\android>keytool -list -v -keystore C:\Users\Mahsin\.android\debug.keystore -alias androiddebugkey -storepass android -keypass android
+Alias name: androiddebugkey
+Creation date: Aug 21, 2023
+Entry type: PrivateKeyEntry
+Certificate chain length: 1
+Certificate[1]:
+Owner: CN=Android Debug, O=Android, C=US
+Issuer: CN=Android Debug, O=Android, C=US
+Serial number: 4eb63619df8f645e
+Valid from: Mon Aug 21 16:48:08 BDT 2023 until: Mon Jul 17 16:48:08 BDT 4761
+Certificate fingerprints:
+         SHA1: 42:3A:AB:D8:20:AF:47:CA:1F:C6:38:E0:B9:31:0D:29:5D:06:E6:E5
+         SHA256: 0C:D9:E8:83:35:78:D1:B7:06:6E:04:C2:5E:FE:01:A4:04:5D:9B:BA:F7:95:4C:C4:C4:9E:E4:FA:65:E8:B2:3D
+Signature algorithm name: SHA256withRSA
+Subject Public Key Algorithm: 2048-bit RSA key
+Version: 3
+
+Extensions:
+
+#1: ObjectId: 2.5.29.14 Criticality=false
+SubjectKeyIdentifier [
+KeyIdentifier [
+0000: 23 72 9D 3F 9D E1 FD A0   DC 9F EE 00 19 BB E3 FD  #r.?............
+0010: 2B 56 46 BB                                        +VF.
+]
+]
+
+
+D:\Flutter-Project\flutterfirebase\android>keytool -list -v -keystore C:\Users\Mahsin\.android\debug.keystore -alias androiddebugkey -storepass android -keypass android
+Alias name: androiddebugkey
+Creation date: Aug 21, 2023
+Entry type: PrivateKeyEntry
+Certificate chain length: 1
+Certificate[1]:
+Owner: CN=Android Debug, O=Android, C=US
+Issuer: CN=Android Debug, O=Android, C=US
+Serial number: 4eb63619df8f645e
+Valid from: Mon Aug 21 16:48:08 BDT 2023 until: Mon Jul 17 16:48:08 BDT 4761
+Certificate fingerprints:
+         SHA1: 42:3A:AB:D8:20:AF:47:CA:1F:C6:38:E0:B9:31:0D:29:5D:06:E6:E5
+         SHA256: 0C:D9:E8:83:35:78:D1:B7:06:6E:04:C2:5E:FE:01:A4:04:5D:9B:BA:F7:95:4C:C4:C4:9E:E4:FA:65:E8:B2:3D
+Signature algorithm name: SHA256withRSA
+Subject Public Key Algorithm: 2048-bit RSA key
+Version: 3
+
+Extensions:
+
+#1: ObjectId: 2.5.29.14 Criticality=false
+SubjectKeyIdentifier [
+KeyIdentifier [
+0000: 23 72 9D 3F 9D E1 FD A0   DC 9F EE 00 19 BB E3 FD  #r.?............
+0010: 2B 56 46 BB                                        +VF.
+]
+]
+
+
+D:\Flutter-Project\flutterfirebase\android>
