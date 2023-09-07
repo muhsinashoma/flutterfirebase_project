@@ -1,0 +1,14 @@
+https://www.youtube.com/watch?v=vbQ2bYHxxEA
+
+GitHub - Create Local Repository and push to github | Push an existing repository to github
+-------------------------------------------------------------------------------------------------
+
+1. git init
+2. git add .
+3. git commit -m "1st comment"
+4. git remote add origin paste the my project link
+5. git push origin master
+6. git push --set-upstream origin master
+7. git add .
+8. git commit -m "2nd comment"
+9. git push

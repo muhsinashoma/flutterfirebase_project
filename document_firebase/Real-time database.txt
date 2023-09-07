@@ -1,0 +1,11 @@
+
+
+Real-time database
+
+Real-time database has two meanings. The most common use of the term refers to a database system which uses streaming technologies to handle workloads whose state is constantly changing. This differs from traditional databases containing persistent data, mostly unaffected by time.
+
+
+https://www.youtube.com/watch?v=U5aeM5dvUpA
+
+
+-------------------------------------------------------------------------------------

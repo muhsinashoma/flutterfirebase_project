@@ -1,0 +1,51 @@
+Microsoft Windows [Version 10.0.19045.3324]
+(c) Microsoft Corporation. All rights reserved.
+
+D:\Flutter-Project\flutterfirebase_project>flutterfire configure
+i Found 0 Firebase projects.
+FirebaseCommandException: An error occured on the Firebase CLI when attempting to run a command.
+COMMAND: firebase --version
+ERROR: The FlutterFire CLI currently requires the official Firebase CLI to also be installed, see https://firebase.google.com/docs/cli#install_the_firebase_cli for how to install it.
+
+D:\Flutter-Project\flutterfirebase_project>flutterfire configure --project=flutter-firebase-97a3f
+i Found 0 Firebase projects. Selecting project flutter-firebase-97a3f.
+FirebaseCommandException: An error occured on the Firebase CLI when attempting to run a command.
+COMMAND: firebase --version
+ERROR: The FlutterFire CLI currently requires the official Firebase CLI to also be installed, see https://firebase.google.com/docs/cli#install_the_firebase_cli for how to install it.
+
+D:\Flutter-Project\flutterfirebase_project>flutterfire configure --project=flutter-firebase-97a3f
+i Found 0 Firebase projects. Selecting project flutter-firebase-97a3f.
+FirebaseCommandException: An error occured on the Firebase CLI when attempting to run a command.
+COMMAND: firebase --version
+ERROR: The FlutterFire CLI currently requires the official Firebase CLI to also be installed, see https://firebase.google.com/docs/cli#install_the_firebase_cli for how to install it.
+
+D:\Flutter-Project\flutterfirebase_project>sudo npm install -g firebasetools
+'sudo' is not recognized as an internal or external command,
+operable program or batch file.
+
+D:\Flutter-Project\flutterfirebase_project>sudo npm install -g firebase-tools
+'sudo' is not recognized as an internal or external command,
+operable program or batch file.
+
+D:\Flutter-Project\flutterfirebase_project>node -v
+'node' is not recognized as an internal or external command,
+operable program or batch file.
+
+D:\Flutter-Project\flutterfirebase_project>curl -sL https://firebase.tools | bash
+'bash' is not recognized as an internal or external command,
+operable program or batch file.
+
+D:\Flutter-Project\flutterfirebase_project>flutterfire configure --project=flutter-firebase-97a3f
+i Found 0 Firebase projects. Selecting project flutter-firebase-97a3f.
+FirebaseCommandException: An error occured on the Firebase CLI when attempting to run a command.
+COMMAND: firebase --version
+ERROR: The FlutterFire CLI currently requires the official Firebase CLI to also be installed, see https://firebase.google.com/docs/cli#install_the_firebase_cli for how to install it.
+
+D:\Flutter-Project\flutterfirebase_project>firebase --version
+'firebase' is not recognized as an internal or external command,
+operable program or batch file.
+
+D:\Flutter-Project\flutterfirebase_project>
+
+
+

@@ -1,0 +1,64 @@
+
+----------------------------------------------------------------------------------------------------------
+What confuses a novice here is navigating to the right place. There is cloud firestore and Real time database in your Firebase console. In this case, several people have already provided a solution already. Make sure you navigate to 
+Firebase console > Real time database > permissions and set the rules.
+
+"rules": {
+".read": true,
+".write": true
+}
+
+Hope this is straightforward now for anyone facing the issue.
+
+------------------------------------------------------------------------------------------------------------
+
+Date : September 07, 2023
+
+Error: FIREBASE FATAL ERROR: Cannot parse Firebase url. Please use https://.firebaseio.com See also:
+
+https://www.youtube.com/watch?v=jJ8lrx9ftJY
+
+---------------------------------------------------------------------------------------------------------
+Firebaseoptions cannot be null when creating the default app. flutter web | Options != null
+
+1. https://www.youtube.com/watch?v=3cDUfcIV9_A
+
+Project name : flutter-firebase
+Project ID : flutter-firebase-97a3f
+Project number : 737454600773
+---------------------------------------------------------------------------------------------------
+
+1. Exception: Building with plugins requires symlink support.
+
+Please enable Developer Mode in your system settings. Run
+  start ms-settings:developers
+to open settings.
+Exited (sigterm)
+
+---------------------------------------------------------------------------------------------------
+
+2. Error: Assertion failed:
+file:///C:/Users/Mahsin/AppData/Local/Pub/Cache/hosted/pub.dev/firebase_core_web-2.7.0/lib/src/firebase_core_web.dart:255:11
+options != null
+
+"FirebaseOptions cannot be null when creating the default app."
+
+
+3. Your project contains issues that can be fixed by running "dart fix" from the command line.
+
+
+Error: Assertion failed:
+file:///C:/Users/Mahsin/AppData/Local/Pub/Cache/hosted/pub.dev/firebase_core_web-2.7.0/lib/src/firebase_core_web.dart:255:11
+options != null
+"FirebaseOptions cannot be null when creating the default app."
+
+
+-------------------------------------------------------------------------------------------------
+Initializing FIrebase on Flutter throws error
+
+https://stackoverflow.com/questions/70221915/initializing-firebase-on-flutter-throws-error
+
+
+https://firebase.flutter.dev/docs/overview/#initializing-flutterfire
+
+-----------------------------------------------------------------------------------------------------

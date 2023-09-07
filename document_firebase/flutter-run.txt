@@ -1,0 +1,2 @@
+Muhsina@DESKTOP-0IITEN8 MINGW64 /d/Flutter-Project/flutterfirebase_project (master)
+$ flutter pub get

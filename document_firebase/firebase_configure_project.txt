@@ -1,0 +1,20 @@
+D:\Flutter-Project\flutterfirebase_project>flutterfire configure --project=flutter-firebase-97a3f
+i Found 1 Firebase projects. Selecting project flutter-firebase-97a3f.
+✔ Which platforms should your configuration support (use arrow keys & space to select)? · android, ios, web
+i Firebase android app com.muhsina.flutterfirebase registered.
+i Firebase ios app com.example.flutterfirebase is not registered on Firebase project flutter-firebase-97a3f.
+i Registered a new Firebase ios app on Firebase project flutter-firebase-97a3f.
+i Firebase web app flutterfirebase_project (web) is not registered on Firebase project flutter-firebase-97a3f.
+i Registered a new Firebase web app on Firebase project flutter-firebase-97a3f.
+
+Firebase configuration file lib\firebase_options.dart generated successfully with the following Firebase apps:
+
+Platform  Firebase App Id
+web       1:737454600773:web:77b69dfb6285f07f27a92c
+android   1:737454600773:android:a9ee37608cdefc0e27a92c
+ios       1:737454600773:ios:fa3f3ed19d00f97c27a92c
+
+Learn more about using this file and next steps from the documentation:
+ > https://firebase.google.com/docs/flutter/setup
+
+D:\Flutter-Project\flutterfirebase_project>
