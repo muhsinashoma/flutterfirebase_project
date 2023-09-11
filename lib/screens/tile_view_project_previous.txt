@@ -1,0 +1,130 @@
+// ignore_for_file: prefer_const_constructors
+
+//import 'dart:convert';
+
+import 'dart:async';
+import 'dart:convert';
+import 'package:flutter/material.dart';
+import 'package:sizer/sizer.dart';
+import 'package:http/http.dart' as http;
+import 'package:tile_view_project/adddata.dart';
+import 'package:tile_view_project/detail.dart';
+import 'package:tile_view_project/model/titleSubTitle.dart';
+
+class TileViewApp extends StatefulWidget {
+  const TileViewApp({Key? key}) : super(key: key);
+
+  @override
+  State<TileViewApp> createState() => _TileViewAppState();
+}
+
+class _TileViewAppState extends State<TileViewApp> {
+  var data = {};
+  Map friendListMap = Map();
+  String arrylist = "Test Purpose";
+  List list_name = [];
+
+  getTitleViewData() async {
+    //To fetch the data from api link
+    var url = Uri.parse("http://localhost/API/getData.php");
+    //print(url);
+    var response = await http.get(url);
+
+    setState(() {
+      var data = jsonDecode(response.body);
+      // print(data);
+
+      list_name = data['arrylist'];
+    });
+  } //end getTitleViewData()
+
+  //To show initial set value before clicking
+  @override
+  void initState() {
+    getTitleViewData();
+    super.initState();
+  }
+
+  final controller = ScrollController();
+  //final List list;
+  //ItemList(this.list);
+
+  @override
+  Widget build(BuildContext context) {
+    return Sizer(builder: (context, orientation, deviceType) {
+      // var movieTitle;
+      //var length;
+      return Scaffold(
+        appBar: AppBar(
+          title: Text('Tile View App Project'),
+          centerTitle: true,
+          backgroundColor: Colors.lightBlue,
+          actions: [
+            IconButton(
+                onPressed: () {
+                  // Text('abc');
+                  const double value = 0;
+                  controller.jumpTo(value);
+                },
+                icon: Icon(Icons.arrow_upward)),
+            IconButton(
+                onPressed: () {
+                  final value = controller.position.maxScrollExtent;
+                  controller.jumpTo(value);
+                },
+                icon: Icon(Icons.arrow_downward))
+          ],
+        ),
+        floatingActionButton: FloatingActionButton(
+          child: Icon(Icons.add),
+          backgroundColor: Colors.blue,
+          onPressed: (() {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (BuildContext context) => AddData()));
+          }),
+        ),
+        body: ListView.builder(
+            controller: controller,
+            itemCount: list_name.length, // key value pattern
+            // itemCount: namesValue.length, //  model pattter
+            itemBuilder: (BuildContext context, int index) {
+              return Card(
+                child: Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: GestureDetector(
+                    onTap: (() {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  DetailTileView(data: list_name[index])));
+                    }),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        ListTile(
+                          leading: Icon(Icons.widgets),
+                          title: Text(
+                            list_name[index][
+                                'title'], //  Text(last_name[index]['title'])   key value pattern   //  Text(namesValue[index].title) //  model pattter
+                            style: TextStyle(color: Colors.blue, fontSize: 15),
+                          ),
+                          subtitle: Text(list_name[index]['subtitle'],
+                              style: TextStyle(
+                                  color: Colors.blueGrey, fontSize: 12)),
+                        ),
+
+                        // key value pattern
+                      ],
+                    ),
+                  ),
+                ),
+              );
+            }),
+      );
+    });
+  }
+}

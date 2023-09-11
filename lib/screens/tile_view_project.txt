@@ -1,0 +1,642 @@
+// ignore_for_file: prefer_const_constructors
+
+//import 'dart:convert';
+
+import 'dart:async';
+import 'dart:convert';
+import 'dart:html';
+import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:sizer/sizer.dart';
+import 'package:http/http.dart' as http;
+import 'package:tile_view_project/ChatPage.dart';
+import 'package:tile_view_project/MessagePage.dart';
+import 'package:tile_view_project/add_single_item_list.dart';
+import 'package:tile_view_project/adddata.dart';
+//import 'package:tile_view_project/commonFiles/urls.dart';
+import 'package:tile_view_project/detail.dart';
+import 'package:tile_view_project/detail_single_item.dart';
+import 'package:tile_view_project/edit_data.dart';
+import 'package:tile_view_project/login_page_static.dart';
+//import 'package:tile_view_project/model/TileViewModel.dart';
+import 'package:tile_view_project/model/titleSubTitle.dart';
+
+import 'package:tile_view_project/favorite_page.dart';
+//import 'package:tile_view_project/navigation_drawer.dart';
+
+import 'package:tile_view_project/drawer_navigation.dart';
+import 'package:tile_view_project/notification.dart';
+import 'package:tile_view_project/user_page.dart';
+
+class TileViewApp extends StatefulWidget {
+  const TileViewApp({Key? key}) : super(key: key);
+
+  @override
+  State<TileViewApp> createState() => _TileViewAppState();
+}
+
+class _TileViewAppState extends State<TileViewApp> {
+  //Bottom Menu Design
+
+  int currentPage = 0;
+  int _selectedIndex = 0;
+
+  List<Widget> children = [
+    TileViewApp(),
+    MessagePage(),
+    UserPage(),
+    ChatPage(),
+  ];
+
+  void _onItemTapped(int index) {
+    setState(() {
+      // currentPage = index + 1;
+      currentPage = index;
+      print('Current Page : $currentPage');
+
+      setState(() {
+        Navigator.of(context).push(
+          MaterialPageRoute(
+              builder: (BuildContext context) => children[currentPage]),
+        );
+      });
+
+      _selectedIndex = index;
+    });
+  }
+
+  String current_datetime = DateFormat.yMMMd().format(DateTime.now());
+  dynamic data = {};
+  //Map friendListMap = Map();
+  String arrylist = "Test Purpose";
+  List list_name = [];
+  List foundItems = [];
+  dynamic enteredKeyword;
+
+  //Favorite Count
+  dynamic count_favortite = 0;
+  int total_count = 0;
+  var favorite_count;
+
+  String token = "";
+
+  getTitleViewData() async {
+    //To fetch the data from api link
+
+    //print('------------------------------------------');
+
+    //localhost connection
+    var url = Uri.parse("http://localhost/API/getData.php");
+
+    //print(url);
+
+    //print("Test Purpose");
+
+    //var url = Uri.parse("http://192.168.32.206/API/getData.php");
+
+    //IP connection
+    //var url = Uri.parse("http://192.168.1.101/API/getData.php");
+
+    // var url = Uri.parse(baseUrl + "getData.php");
+
+    //print(url);
+
+    var response = await http.get(url);
+
+    setState(() {
+      //Key Relation with json data
+      var data =
+          jsonDecode(response.body); //  print(data); // To show all datas
+
+      list_name = data['arrylist'];
+
+      foundItems = list_name;
+    });
+  } //end getTitleViewData()
+
+  //To Show Favorite Count in Dashboard
+  Future<void> calculateTotalFavorite() async {
+    var url = Uri.parse("http://localhost/API/get_favortie_count.php");
+    var response = await http.get(url);
+    //print(response);
+
+    setState(() {
+      var data = jsonDecode(response.body.toString()); //print(data);
+
+      count_favortite =
+          data['favorite_count']; //print('Total : $count_favortite');
+    });
+  }
+
+  //To show initial set value before clicking
+  @override
+  void initState() {
+    getTitleViewData();
+    foundItems = list_name;
+    calculateTotalFavorite();
+
+    //DetailSingleItem(data: list_name);
+    super.initState();
+
+    getCred();
+  }
+
+  runFilter(String enteredKeyword) {
+    List results = [];
+    //print(enteredKeyword);
+    //print(enteredKeyword.isEmpty);
+
+    if (enteredKeyword.isEmpty) {
+      setState(() {
+        foundItems = list_name;
+      });
+    } else {
+      results = list_name
+          .where((user) => user["title"]
+              .toLowerCase()
+              .contains(enteredKeyword.toLowerCase()))
+          .toList();
+
+      //print(results);
+
+      setState(() {
+        foundItems = results;
+      });
+    } //end else
+  } //end runFilter
+
+  final controller = ScrollController();
+
+  void deleteData([list_name]) {
+    print(list_name);
+    var url = Uri.parse("http://localhost/API/deleteData.php");
+
+    print(url);
+    var response = http.post(url, body: {'id': list_name});
+
+    print(response);
+
+    //print(response.toString());
+  }
+
+  void updateData([foundItems]) {
+    print(foundItems);
+  }
+
+  void addAllListItem(foundItems) {
+    print(foundItems);
+  }
+
+  Future<void> getCred() async {
+    //Here we fetch our credentials from Shared Preferences
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    token = prefs.getString("token")!;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    // var pages = List.generate(
+    //   numberOfPages,
+    //   (index) => Center(
+    //     child: Center(
+    //       child: Text(
+    //         'Page Number ${index}',
+    //         //'Page Number ${index + 1}',
+    //         style: TextStyle(color: Colors.blue, fontSize: 20),
+    //       ),
+    //     ),
+    //   ),
+    // );
+
+    return Sizer(builder: (context, orientation, deviceType) {
+      // var movieTitle;
+      //var length;
+      return Scaffold(
+        appBar: AppBar(
+          title: Text('Tile View App : ${token}'),
+          centerTitle: true,
+          backgroundColor: Color.fromARGB(255, 198, 232, 248),
+          actions: [
+            Row(
+              children: [
+                // Text('Your Token ${token}'),
+                Text('$current_datetime '),
+                IconButton(
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (BuildContext context) => FavoritePage()));
+                  },
+                  icon: Icon(Icons.favorite_border),
+                  // color: Colors.grey,
+                ),
+                Text("$count_favortite"),
+              ],
+            ),
+            IconButton(
+                onPressed: () {
+                  // Text('abc');
+                  const double value = 0;
+                  controller.jumpTo(value);
+                },
+                icon: Icon(Icons.arrow_upward)),
+            IconButton(
+              onPressed: () {
+                final value = controller.position.maxScrollExtent;
+                controller.jumpTo(value);
+              },
+              icon: Icon(Icons.arrow_downward),
+            ),
+            IconButton(
+              onPressed: () async {
+                SharedPreferences prefs = await SharedPreferences.getInstance();
+                await prefs.clear();
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                    builder: (BuildContext) => Login(),
+                  ),
+                );
+              },
+              icon: Icon(Icons.logout),
+            ),
+          ], //End Action
+        ),
+
+        // drawer: NavigationDrawer(),
+        drawer: DrawerNavigation(),
+
+        //Add Data with + icon button
+        floatingActionButton: FloatingActionButton(
+          child: Icon(Icons.add),
+          backgroundColor: Colors.blue,
+          onPressed: (() {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (BuildContext context) => AddData()));
+          }),
+        ),
+
+        // body: Center(
+        //   child: _widgetOptions.elementAt(_selectedIndex),
+        // ),
+
+// ------------Start Body------------
+        body: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            children: [
+              SizedBox(
+                height: 20,
+              ),
+              TextField(
+                onChanged: (value) {
+                  // print(value);
+                  runFilter(value);
+                },
+                decoration: InputDecoration(
+                    labelText: 'Type here to search',
+                    suffixIcon: Icon(Icons.search)),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              Expanded(
+                child: Column(
+                  children: [
+                    //To show indexing number in body using onTab
+                    // Expanded(
+                    //     child: Container(
+                    //   child: pages[_selectedIndex],
+                    // )),
+
+                    Expanded(
+                      child: foundItems.isNotEmpty
+                          ? ListView.builder(
+                              controller: controller,
+
+                              //Model pattter
+                              // itemCount: tileViewModel.arrylist!.length, // key value pattern
+
+                              //Key Pattern
+                              itemCount: foundItems.length,
+
+                              // itemCount: foundItems.length,
+
+                              // itemCount: namesValue.length, //  model pattter
+                              itemBuilder: (BuildContext context, int index) {
+                                return Card(
+                                  key: ValueKey(foundItems[index]['id']),
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(10.0),
+                                    child: GestureDetector(
+                                      onTap: () {
+                                        // Workging Perfectly with reloading
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  DetailSingleItem(
+                                                      data: foundItems[index])),
+                                        ).then((value) => setState(() {
+                                              calculateTotalFavorite();
+                                            }));
+                                      },
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          ListTile(
+                                            //leading: Icon(Icons.widgets),
+
+                                            leading: Text(
+                                              foundItems[index]["id"]
+                                                  .toString(),
+                                              style: const TextStyle(
+                                                  fontSize: 24,
+                                                  color: Colors.black54),
+                                            ),
+
+                                            //key pattern
+                                            title: Text(
+                                                foundItems[index]['title'],
+                                                style: TextStyle(
+                                                    color: Colors.blue,
+                                                    fontSize: 15)),
+
+                                            //Key Pattern
+                                            subtitle: Text(
+                                                foundItems[index]['subtitle'],
+                                                style: TextStyle(
+                                                    color: Color.fromARGB(
+                                                        255, 122, 131, 140),
+                                                    fontSize: 12)),
+
+                                            trailing: Container(
+                                              width: 120,
+                                              child: Row(
+                                                children: [
+                                                  //To Add Button
+                                                  IconButton(
+                                                      onPressed: () {
+                                                        //Key Patter
+                                                        addAllListItem(
+                                                            foundItems[index]
+                                                                ['id']);
+                                                        Navigator.of(context).push(MaterialPageRoute(
+                                                            builder: (BuildContext
+                                                                    context) =>
+                                                                AddSingleItemList(
+                                                                    data: foundItems[
+                                                                        index])));
+                                                      },
+                                                      icon: Icon(Icons.add)),
+
+                                                  //To Update Button
+                                                  IconButton(
+                                                      onPressed: () {
+                                                        //Key Pattern
+
+                                                        updateData(
+                                                            foundItems[index]
+                                                                ['id']);
+                                                        Navigator.of(context).push(
+                                                            MaterialPageRoute(
+                                                                builder: (BuildContext
+                                                                        context) =>
+                                                                    EditData(
+                                                                        data: foundItems[
+                                                                            index])));
+                                                      },
+                                                      icon: Icon(Icons.edit)),
+
+                                                  //To Delete Button
+                                                  IconButton(
+                                                      onPressed: () {
+                                                        //Key Pattern
+                                                        deleteData(
+                                                            foundItems[index]
+                                                                ['id']);
+                                                        Navigator.of(context)
+                                                            .push(
+                                                                MaterialPageRoute(
+                                                          builder: (BuildContext
+                                                                  context) =>
+                                                              TileViewApp(),
+                                                        ));
+                                                      },
+                                                      icon: Icon(Icons.delete))
+                                                ],
+                                              ),
+                                            ),
+                                          ),
+
+                                          // key value pattern
+                                        ], //children
+                                      ),
+                                    ),
+                                  ),
+                                );
+                              })
+                          : const Text(
+                              'No results found',
+                              style: TextStyle(fontSize: 24),
+                            ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+        //---------End Body--------------
+
+        //-------Start Bottom Navigation Bar-----------
+        bottomNavigationBar: BottomNavigationBar(
+          backgroundColor: Color.fromARGB(255, 198, 232, 248),
+          currentIndex: _selectedIndex,
+          selectedItemColor: Colors.amber[800],
+          onTap: _onItemTapped,
+          items: [
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home),
+              label: 'Home',
+              // backgroundColor: Colors.red,
+              backgroundColor: Color.fromARGB(255, 198, 232, 248),
+            ),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.mail),
+                label: 'Message',
+                backgroundColor: Colors.green),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.person),
+                label: 'Profile',
+                backgroundColor: Colors.purple),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.chat),
+                label: 'Chat',
+                backgroundColor: Colors.green),
+          ],
+        ),
+        //-------End Bottom Navigation Bar-----------
+      );
+    });
+  }
+}
+
+// ------------Start Body------------
+// body: Padding(
+//   padding: const EdgeInsets.all(8.0),
+//   child: Column(
+//     children: [
+//       SizedBox(
+//         height: 20,
+//       ),
+//       TextField(
+//         onChanged: (value) {
+//           // print(value);
+//           runFilter(value);
+//         },
+//         decoration: InputDecoration(
+//             labelText: 'Type here to search',
+//             suffixIcon: Icon(Icons.search)),
+//       ),
+//       SizedBox(
+//         height: 20,
+//       ),
+//       Expanded(
+//         child: foundItems.isNotEmpty
+//             ? ListView.builder(
+//                 controller: controller,
+
+//                 //Model pattter
+//                 // itemCount: tileViewModel.arrylist!.length, // key value pattern
+
+//                 //Key Pattern
+//                 itemCount: foundItems.length,
+
+//                 // itemCount: foundItems.length,
+
+//                 // itemCount: namesValue.length, //  model pattter
+//                 itemBuilder: (BuildContext context, int index) {
+//                   return Card(
+//                     key: ValueKey(foundItems[index]['id']),
+//                     child: Padding(
+//                       padding: const EdgeInsets.all(10.0),
+//                       child: GestureDetector(
+//                         onTap: () {
+//                           // Workging Perfectly with reloading
+//                           Navigator.push(
+//                             context,
+//                             MaterialPageRoute(
+//                                 builder: (context) => DetailSingleItem(
+//                                     data: foundItems[index])),
+//                           ).then((value) => setState(() {
+//                                 calculateTotalFavorite();
+//                               }));
+//                         },
+//                         child: Column(
+//                           crossAxisAlignment: CrossAxisAlignment.center,
+//                           mainAxisAlignment: MainAxisAlignment.center,
+//                           children: [
+//                             ListTile(
+//                               //leading: Icon(Icons.widgets),
+
+//                               leading: Text(
+//                                 foundItems[index]["id"].toString(),
+//                                 style: const TextStyle(
+//                                     fontSize: 24,
+//                                     color: Colors.black54),
+//                               ),
+
+//                               //key pattern
+//                               title: Text(foundItems[index]['title'],
+//                                   style: TextStyle(
+//                                       color: Colors.blue,
+//                                       fontSize: 15)),
+
+//                               //Key Pattern
+//                               subtitle: Text(
+//                                   foundItems[index]['subtitle'],
+//                                   style: TextStyle(
+//                                       color: Color.fromARGB(
+//                                           255, 122, 131, 140),
+//                                       fontSize: 12)),
+
+//                               trailing: Container(
+//                                 width: 120,
+//                                 child: Row(
+//                                   children: [
+//                                     //To Add Button
+//                                     IconButton(
+//                                         onPressed: () {
+//                                           //Key Patter
+//                                           addAllListItem(
+//                                               foundItems[index]['id']);
+//                                           Navigator.of(context).push(
+//                                               MaterialPageRoute(
+//                                                   builder: (BuildContext
+//                                                           context) =>
+//                                                       AddSingleItemList(
+//                                                           data: foundItems[
+//                                                               index])));
+//                                         },
+//                                         icon: Icon(Icons.add)),
+
+//                                     //To Update Button
+//                                     IconButton(
+//                                         onPressed: () {
+//                                           //Key Pattern
+
+//                                           updateData(
+//                                               foundItems[index]['id']);
+//                                           Navigator.of(context).push(
+//                                               MaterialPageRoute(
+//                                                   builder: (BuildContext
+//                                                           context) =>
+//                                                       EditData(
+//                                                           data: foundItems[
+//                                                               index])));
+//                                         },
+//                                         icon: Icon(Icons.edit)),
+
+//                                     //To Delete Button
+//                                     IconButton(
+//                                         onPressed: () {
+//                                           //Key Pattern
+//                                           deleteData(
+//                                               foundItems[index]['id']);
+//                                           Navigator.of(context)
+//                                               .push(MaterialPageRoute(
+//                                             builder: (BuildContext
+//                                                     context) =>
+//                                                 TileViewApp(),
+//                                           ));
+//                                         },
+//                                         icon: Icon(Icons.delete))
+//                                   ],
+//                                 ),
+//                               ),
+//                             ),
+
+//                             // key value pattern
+//                           ], //children
+//                         ),
+//                       ),
+//                     ),
+//                   );
+//                 })
+//             : const Text(
+//                 'No results found',
+//                 style: TextStyle(fontSize: 24),
+//               ),
+//       ),
+//     ],
+//   ),
+// ),
+//---------End Body--------------

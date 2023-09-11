@@ -1,5 +1,6 @@
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
+import 'package:flutterfirebase_project/screens/fetch_data.dart';
 
 class FirebaseProject extends StatefulWidget {
   const FirebaseProject({super.key});
@@ -28,9 +29,21 @@ class _FirebaseProjectState extends State<FirebaseProject> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Insert using firebase'),
+
         centerTitle: true,
         //backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         backgroundColor: Colors.blue,
+        actions: [
+          IconButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => FetchData()),
+              );
+            },
+            icon: Icon(Icons.view_agenda),
+          )
+        ],
       ),
       body: Center(
         child: Padding(
@@ -96,6 +109,10 @@ class _FirebaseProjectState extends State<FirebaseProject> {
                   };
 
                   dbRef.push().set(students);
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (BuildContext context) => FetchData()));
                 },
                 child: Text('Insert Data'),
                 color: Colors.blue,
