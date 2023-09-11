@@ -12,6 +12,8 @@ class FetchData extends StatefulWidget {
 
 class _FetchDataState extends State<FetchData> {
   Query dbRef = FirebaseDatabase.instance.ref().child('Students');
+  DatabaseReference reference =
+      FirebaseDatabase.instance.ref().child('Students');
   Widget ListItem({required Map student}) {
     return Container(
       margin: EdgeInsets.all(10),
@@ -65,7 +67,9 @@ class _FetchDataState extends State<FetchData> {
                 width: 5,
               ),
               GestureDetector(
-                onTap: () {},
+                onTap: () {
+                  reference.child(student['key']).remove();
+                },
                 child: Row(
                   children: [
                     Icon(

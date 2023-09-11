@@ -1,18 +1,50 @@
 
+----------------------------------------------------------------------------------------------------------
+September 11, 2023
+
+https://www.youtube.com/watch?v=ErP_xomHKTw&t=14s
+Flutter Firebase CRUD (Create, Read, Update, Delete)
+
+-------------------------------------------------------------------------------------------------------------
+
+https://www.youtube.com/@CodingZest
+
 
 How to Insert Data in Firebase Realtime Database Flutter | Flutter Firebase Database CRUD 2022
 https://www.youtube.com/watch?v=8kUx9TFhXpQ
 
 
 --------------------------------------------------------------------------------------------------------------
+September 8, 2023
 https://www.youtube.com/watch?v=8kUx9TFhXpQ
 
 How to Insert Data in Firebase Realtime Database Flutter | Flutter Firebase Database CRUD 2022
 -------------------------------------------------------------------------------------------------------------
 
+https://www.youtube.com/@CodingZest
+
+September 11, 2023
 
 https://www.youtube.com/watch?v=zn2vHRbWszY
 
 How to Fetch Data From Firebase Realtime Database Flutter | Flutter Firebase Database CRUD 2022
 -------------------------------------------------------------------------------------------------------------
+https://www.youtube.com/@CodingZest
 
+September 11, 2023
+
+https://www.youtube.com/watch?v=p2TDti0n0Oo
+
+How to Delete Data From Firebase Realtime Database Flutter | Flutter Firebase Database CRUD 2022
+
+----------------------------------------------------------------------------------------------------------
+
+https://www.youtube.com/@CodingZest
+
+September 11, 2023
+
+https://www.youtube.com/watch?v=qduwkJh_5go&list=PLHQRWugvckFqcfI5s84Sw9w2i4ryEqGnr&index=4
+
+How to Update Data in Firebase Realtime Database Flutter | Flutter Firebase Database CRUD 2022
+
+------------------------------------------------------------------------------------------------------------
