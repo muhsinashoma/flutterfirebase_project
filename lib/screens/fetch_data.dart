@@ -2,6 +2,7 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterfirebase_project/screens/insert_data.dart';
+import 'package:flutterfirebase_project/screens/update_record.dart';
 
 class FetchData extends StatefulWidget {
   const FetchData({super.key});
@@ -25,14 +26,6 @@ class _FetchDataState extends State<FetchData> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            //  'Email',
-            student['email'],
-            style: TextStyle(fontSize: 15, fontWeight: FontWeight.w400),
-          ),
-          SizedBox(
-            height: 3,
-          ),
-          Text(
             // 'Name',
             student['name'],
             style: TextStyle(fontSize: 15, fontWeight: FontWeight.w400),
@@ -48,12 +41,31 @@ class _FetchDataState extends State<FetchData> {
           SizedBox(
             height: 3,
           ),
+          Text(
+            //  'Email',
+            student['email'],
+            style: TextStyle(fontSize: 15, fontWeight: FontWeight.w400),
+          ),
+          SizedBox(
+            height: 3,
+          ),
+          Text(
+            student['address'],
+            style: TextStyle(fontSize: 15, fontWeight: FontWeight.w400),
+          ),
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               GestureDetector(
-                onTap: () {},
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) =>
+                            UpateRecord(studentKey: student['key'])),
+                  );
+                },
                 child: Row(
                   children: [
                     Icon(

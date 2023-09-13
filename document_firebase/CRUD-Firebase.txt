@@ -5,6 +5,13 @@ September 11, 2023
 https://www.youtube.com/watch?v=ErP_xomHKTw&t=14s
 Flutter Firebase CRUD (Create, Read, Update, Delete)
 
+---------------------------------------------------------------------------------------------------------
+
+How to Connect Firebase with Flutter 2022 | Flutter Firebase Setup Android & iOS Tutorial 2022
+
+https://www.youtube.com/watch?v=ok6se5sOthw&list=PLHQRWugvckFqcfI5s84Sw9w2i4ryEqGnr&index=1
+
+
 -------------------------------------------------------------------------------------------------------------
 
 https://www.youtube.com/@CodingZest
@@ -42,6 +49,8 @@ How to Delete Data From Firebase Realtime Database Flutter | Flutter Firebase Da
 https://www.youtube.com/@CodingZest
 
 September 11, 2023
+
+https://www.youtube.com/watch?v=qduwkJh_5go&list=PLHQRWugvckFqcfI5s84Sw9w2i4ryEqGnr&index=4
 
 https://www.youtube.com/watch?v=qduwkJh_5go&list=PLHQRWugvckFqcfI5s84Sw9w2i4ryEqGnr&index=4
 

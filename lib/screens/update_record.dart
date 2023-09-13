@@ -2,49 +2,49 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterfirebase_project/screens/fetch_data.dart';
 
-class FirebaseProject extends StatefulWidget {
-  const FirebaseProject({super.key});
+class UpateRecord extends StatefulWidget {
+  const UpateRecord({super.key, required this.studentKey});
+
+  final String studentKey;
 
   @override
-  State<FirebaseProject> createState() => _FirebaseProjectState();
+  State<UpateRecord> createState() => _UpateRecordState();
 }
 
-class _FirebaseProjectState extends State<FirebaseProject> {
-  //var userNameController;
-
+class _UpateRecordState extends State<UpateRecord> {
   final TextEditingController userNameController = TextEditingController();
   final TextEditingController userEmailController = TextEditingController();
   final TextEditingController userPhoneController = TextEditingController();
   final TextEditingController userAddressController = TextEditingController();
 
   late DatabaseReference dbRef;
+
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
     dbRef = FirebaseDatabase.instance.ref().child('Students');
+    getStudentData();
+  }
+
+  void getStudentData() async {
+    DataSnapshot snapshot = await dbRef.child(widget.studentKey).get();
+
+    Map student = snapshot.value as Map;
+
+    userNameController.text = student['name'];
+    userEmailController.text = student['email'];
+    userPhoneController.text = student['phone'];
+    userAddressController.text = student['address'];
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Insert using firebase'),
-
+        title: Text('Updating Record'),
         centerTitle: true,
-        //backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         backgroundColor: Colors.blue,
-        actions: [
-          IconButton(
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => FetchData()),
-              );
-            },
-            icon: Icon(Icons.view_agenda),
-          )
-        ],
       ),
       body: Center(
         child: Padding(
@@ -99,16 +99,15 @@ class _FirebaseProjectState extends State<FirebaseProject> {
                 ),
               ),
               SizedBox(
-                height: 30,
+                height: 15,
               ),
               TextField(
                 controller: userAddressController,
                 keyboardType: TextInputType.streetAddress,
                 decoration: InputDecoration(
-                  hintText: "Enter Your Address",
-                  labelText: "Address",
-                  border: OutlineInputBorder(),
-                ),
+                    hintText: "Enter Your Address",
+                    labelText: "Address",
+                    border: OutlineInputBorder()),
               ),
               SizedBox(
                 height: 30,
@@ -122,13 +121,17 @@ class _FirebaseProjectState extends State<FirebaseProject> {
                     'address': userAddressController.text,
                   };
 
-                  dbRef.push().set(students);
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (BuildContext context) => FetchData()));
-                },
-                child: Text('Insert Data'),
+                  dbRef
+                      .child(widget.studentKey)
+                      .update(students)
+                      .then((value) => {Navigator.pop(context)});
+
+                  // Navigator.push(
+                  //     context,
+                  //     MaterialPageRoute(
+                  //         builder: (BuildContext context) => FetchData()));
+                }, //onPressed
+                child: Text('Update Data'),
                 color: Colors.blue,
                 textColor: Colors.white,
                 minWidth: 300,
@@ -139,5 +142,5 @@ class _FirebaseProjectState extends State<FirebaseProject> {
         ),
       ),
     );
-  } //build
-}  // FirebaseProject
+  }
+}
